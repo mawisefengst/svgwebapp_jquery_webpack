@@ -1,0 +1,181 @@
+<!DOCTYPE taglib
+  PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+  "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+
+<taglib>
+  <tlib-version>1.0</tlib-version>
+  <jsp-version>1.2</jsp-version>
+  <short-name>cgi_utiltaglib</short-name>
+  <uri>http://www.catalyticgroup.com/tld/cgi_utiltaglib.tld</uri>
+  <display-name>SiteStarters General Utilities</display-name>
+  <description>
+    Contains a set of utility tags.
+  </description>
+
+<!--
+ Util Tag
+-->
+
+<tag>
+  <name>iterator</name>
+  <tag-class>com.catalyticgroup.cgi.util.actions.IteratorTag</tag-class>
+  <body-content>JSP</body-content>
+  <display-name>iterator</display-name>
+  <description>
+    Evaluates its body repeatedly.
+  </description>
+  <attribute>
+    <name>iterate</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    <type>int</type>
+    <description>
+      The number of times to iterate.
+    </description>
+  </attribute>
+</tag>
+
+<tag>
+  <name>contextURI</name>
+  <tag-class>com.catalyticgroup.cgi.util.actions.UtilContextURITag</tag-class>
+  <body-content>EMPTY</body-content>
+  <display-name>contextURI</display-name>
+  <description>
+    Generates a context-absolute URI, session encoded.
+  </description>
+  <attribute>
+    <name>uri</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+    <type>java.lang.String</type>
+    <description>
+      A context-relative URI to convert.
+    </description>
+  </attribute>
+</tag>
+
+<tag>
+  <name>uri</name>
+  <tag-class>com.catalyticgroup.cgi.util.actions.UtilURITag</tag-class>
+  <body-content>JSP</body-content>
+  <display-name>uri</display-name>
+  <description>
+    Generates a context-absolute URI, session encoded.
+    This tag functions similarly to contextURI except that the base URI
+    to modify comes from the body instead of an attribute.  Thus, the output
+    of other tags and scriplets can easily be used to generate the base URI.
+  </description>
+  <attribute>
+    <name>host</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    <type>java.lang.String</type>
+    <description>
+      true to prepend the scheme, host, and port (if not the default port),
+      false otherwise.  If host=true, context (see below) is forced to true.
+      The default if this attribute is not supplied is false.
+    </description>
+  </attribute>
+  <attribute>
+    <name>context</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    <type>java.lang.String</type>
+    <description>
+      true to prepend the application context, false otherwise.  The default 
+      if this attribute is not supplied is true.
+    </description>
+  </attribute>
+  <attribute>
+    <name>session</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    <type>java.lang.String</type>
+    <description>
+      true to add session tracking data, false otherwise.  The default 
+      if this attribute is not supplied is true.
+    </description>
+  </attribute>
+  <attribute>
+    <name>space</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    <type>java.lang.String</type>
+    <description>
+      true to leave existing whitespace alone, false to strip whitespace out.
+      The default is false, since URI's don't normally contain whitespace.  To
+      preserve whitespace, it should be properly URI encoded.
+    </description>
+  </attribute>
+</tag>
+
+<tag>
+  <name>serverParam</name>
+  <tag-class>com.catalyticgroup.cgi.util.actions.ServerParamTag</tag-class>
+  <body-content>EMPTY</body-content>
+  <display-name>serverParam</display-name>
+  <description>
+    Display named application parameters.
+  </description>
+  <attribute>
+    <name>paramName</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+    <type>java.lang.String</type>
+    <description>
+      The name of the parameter to display.
+    </description>
+  </attribute>
+  <attribute>
+    <name>prefix</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    <type>java.lang.String</type>
+    <description>
+      A value to prepend to the returned parameter.
+    </description>
+  </attribute>
+  <attribute>
+    <name>suffix</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    <type>java.lang.String</type>
+    <description>
+      A value to append to the returned parameter.
+    </description>
+  </attribute>
+</tag>
+
+<tag>
+  <name>bodyToVar</name>
+  <tag-class>com.catalyticgroup.cgi.util.actions.BodyToVarTag</tag-class>
+  <tei-class>com.catalyticgroup.cgi.util.actions.BodyToVarTagExtraInfo</tei-class>
+  <body-content>JSP</body-content>
+  <display-name>bodyToVar</display-name>
+  <description>
+    Copy the content of the body into a JSP page variable called tagContent.
+  </description>
+  <attribute>
+    <name>passthrough</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    <type>java.lang.String</type>
+    <description>
+      true to also reproduce the content on the page, false otherwise.
+      If this attribute is not supplied, defaults to false.
+    </description>
+  </attribute>
+  <attribute>
+    <name>trim</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    <type>java.lang.String</type>
+    <description>
+      true to trim existing whitespace from the start and end of the content,
+      false to reproduce content exactlty as is.
+      Defaults to true.
+    </description>
+  </attribute>
+</tag>
+
+</taglib>

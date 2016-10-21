@@ -1,0 +1,103 @@
+<!DOCTYPE taglib
+  PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+  "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+
+<taglib>
+  <tlib-version>1.0</tlib-version>
+  <jsp-version>1.2</jsp-version>
+  <short-name>cgi_paramstaglib</short-name>
+  <uri>http://www.catalyticgroup.com/tld/cgi_paramstaglib.tld</uri>
+  <display-name>SiteStarters Parameter Utilities</display-name>
+  <description>
+    Contains a set of HTML parameter handling utility tags.
+  </description>
+
+<!--
+ Param Tag
+-->
+
+<tag>
+  <name>entity</name>
+  <tag-class>com.catalyticgroup.cgi.params.actions.EntityTag</tag-class>
+  <body-content>JSP</body-content>
+  <display-name>entity</display-name>
+  <description>
+    Escapes ampersands with the ISO entity equivalent to prevent them from
+    being interpreted by the browser so that they are displayed as 
+    content instead.
+  </description>
+  <attribute>
+    <name>allFive</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    <type>java.lang.String</type>
+    <description>
+      true to also convert the other four HTML special chars to entities, 
+      false otherwise.  The default if this attribute is not supplied 
+      is false (that is, only ampersand is escaped).
+    </description>
+  </attribute>
+</tag>
+
+<tag>
+  <name>date</name>
+  <tag-class>com.catalyticgroup.cgi.params.actions.DateTag</tag-class>
+  <body-content>JSP</body-content>
+  <display-name>date</display-name>
+  <description>Displays the date, in given format (default: mm/dd/yyyy).</description>
+  <attribute>
+    <name>showMe</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+    <type>java.util.Date</type>
+    <description>A date to show.</description>
+  </attribute>
+  <attribute>
+    <name>format</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    <type>java.lang.String</type>
+    <description>A date format string suitable for use with java.text.SimpleDateFormat.</description>
+  </attribute>
+</tag>
+
+<tag>
+  <name>double</name>
+  <tag-class>com.catalyticgroup.cgi.params.actions.DoubleTag</tag-class>
+  <body-content>JSP</body-content>
+  <display-name>double</display-name>
+  <description>Displays the double, in given format (default: 0.00).</description>
+  <attribute>
+    <name>showMe</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+    <type>java.util.Date</type>
+    <description>A date to show.</description>
+  </attribute>
+  <attribute>
+    <name>format</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    <type>java.lang.String</type>
+    <description>A decimal format string suitable for use with java.text.DecimalFormat.</description>
+  </attribute>
+  <attribute>
+    <name>grouping</name>
+    <required>false</required>
+    <description>group boolean value used with java.text.DecimalFormat</description>
+  </attribute>
+  <attribute>
+    <name>mm</name>
+    <required>false</required>
+    <description>true to divide value by 1,000,000</description>
+  </attribute>
+  <attribute>
+    <name>ifZero</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    <type>java.lang.String</type>
+    <description>What to show if the value is zero.</description>
+  </attribute>
+</tag>
+
+</taglib>

@@ -1,0 +1,15 @@
+Currently, pad, square, replaceColor and composite only generate PNG
+format as output (they can use any format as input).  This is due to
+two bugs in the ImageIO implementation for JPEG and GIF writers.  The
+GIF writer produces black where it should be transparent (this is
+supposedly fixed in jre 7).  The JPEG writer produces odd looking and
+sometimes totally broken images when the source contains transparency.
+A solution for JPEG could be to ensure the source contains no
+transparency by replacing it with a known solid color first, also
+ensuring the ColorModel is RGB and not ARGB (since JPEG format doesn't
+support transparency this should be an okay thing to do).
+
+Some discussion is here:
+
+  http://stackoverflow.com/questions/464825/converting-transparent-gif-png-to-jpeg-using-java
+

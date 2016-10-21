@@ -1,0 +1,927 @@
+@font-face {
+    font-family: 'Gotham Book';
+    src: url('../fonts/ufonts.com_gotham-book-webfont.woff2') format('woff2'),
+         url('../fonts/ufonts.com_gotham-book-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+  font-family:"Cervo W01 Thin";
+    src:url("../fonts/047e2404-aef5-494f-94ce-38b133a26f71.eot?#iefix");
+    src:url("../fonts/047e2404-aef5-494f-94ce-38b133a26f71.eot?#iefix") format("eot"),
+        url("../fonts/3bdacac1-a26f-4575-a61f-690dd64d00a2.woff2") format("woff2"),
+        url("../fonts/3ee483b3-234c-47d0-9f8b-ea841107541a.woff") format("woff"),
+        url("../fonts/bc1d8931-fe47-444d-80bc-7c2cb52c5a82.ttf") format("truetype"),
+        url("../fonts/4c7bf18d-f30f-4581-a83c-51b436af7934.svg#4c7bf18d-f30f-4581-a83c-51b436af7934") format("svg");
+}
+@font-face{
+  font-family:"Cervo W01 Light";
+  src:url("../fonts/d3f6a541-fcc5-4c83-8a1e-a9f67c414dea.eot?#iefix");
+  src:url("../fonts/d3f6a541-fcc5-4c83-8a1e-a9f67c414dea.eot?#iefix") format("eot"),
+      url("../fonts/493546dd-5f17-4e1f-814a-b411b1dcc2e5.woff2") format("woff2"),
+      url("../fonts/86be7f2a-c0a1-469d-971d-b74b3e0e50da.woff") format("woff"),
+      url("../fonts/21c77a35-3885-4aa2-9272-6add2fc4218c.ttf") format("truetype"),
+      url("../fonts/19935f27-3ad7-4f68-8fd0-266dfaac5191.svg#19935f27-3ad7-4f68-8fd0-266dfaac5191") format("svg");
+}
+@font-face{
+    font-family:"Cervo W01 Regular";
+    src:url("../fonts/0737e7d3-280b-4ed6-bb9e-1ca0c5722c38.eot?#iefix");
+    src:url("../fonts/0737e7d3-280b-4ed6-bb9e-1ca0c5722c38.eot?#iefix") format("eot"),
+        url("../fonts/10e1a3d2-ec7c-4596-a85a-ac85fb635410.woff2") format("woff2"),
+        url("../fonts/1d1f3287-48b0-42a5-91bf-eb42fe777620.woff") format("woff"),
+        url("../fonts/ddc44530-bb93-49fb-b51c-5ca9ebc5b287.ttf") format("truetype"),
+        url("../fonts/38899934-6c43-417b-8972-ccc507007ec0.svg#38899934-6c43-417b-8972-ccc507007ec0") format("svg");
+}
+@font-face{
+    font-family:"Cervo W01 Medium";
+    src:url("../fonts/0901b26e-5beb-41b9-ab6b-47dd6078dfc8.eot?#iefix");
+    src:url("../fonts/0901b26e-5beb-41b9-ab6b-47dd6078dfc8.eot?#iefix") format("eot"),
+        url("../fonts/4a49c9d3-eb5e-4a6a-be64-db23173343e1.woff2") format("woff2"),
+        url("../fonts/5577bcf0-20e0-473d-9315-29f3bebf47e1.woff") format("woff"),
+        url("../fonts/b4e1ca8b-2223-4b21-8dfe-99e984de1615.ttf") format("truetype"),
+        url("../fonts/a0a267c6-00d0-4a4d-8f9d-c46790abc94b.svg#a0a267c6-00d0-4a4d-8f9d-c46790abc94b") format("svg");
+}
+
+*{
+  box-sizing: border-box;
+}
+
+.row {
+
+}
+
+.container{
+  width: 100%;
+  max-width: 1168px;
+  margin: 0 auto;
+}
+
+[class*="col-"] img{
+  max-width: 90%;
+}
+
+.col-md-2-4{
+  background: #f1f1f1;
+  height: 200px;
+  margin: 0 2% 15px 0;
+}
+
+.rightColumDetail{
+  position: relative;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.ui-loader{display: none;}
+
+.detailView{
+  max-height: 0px;
+  position: relative;
+  overflow: hidden;
+}
+
+.detailView.noborder{
+  border: none;
+}
+
+
+.detailView.expand{
+	max-height: 540px;
+  margin: 0px 0 20px;
+  position: relative;
+  margin-bottom:35px;
+  overflow: inherit;
+  border: 2px solid #004779;
+}
+
+.detailView.expand *{
+  visibility: hidden;
+}
+
+.detailView.expand.show *{
+  visibility: visible;
+}
+
+
+.fixedDetailView{
+  position: fixed;
+  width: 1168px;
+  max-height: 0px;
+  -webkit-transition: max-height .3s linear;
+  -moz-transition: max-height .3s linear;
+  -ms-transition: max-height .3s linear;
+  -o-transition: max-height .3s linear;
+  transition: max-height .3s linear;  
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.fixedDetailView.expand{
+  max-height: 540px;
+  border: 2px solid #004779;
+  overflow: inherit;
+}
+
+.fixedDetailView.hidden{
+  display: none;
+}
+
+
+.detailView .prevBtn,
+.detailView .nextBtn,
+.detailView .expand_photo,
+.detailView .closeBtn,
+.detailView .shopthelook_share_header,
+.detailView .fa,
+.fixedDetailView .prevBtn,
+.fixedDetailView .nextBtn,
+.fixedDetailView .expand_photo,
+.fixedDetailView .closeBtn,
+.fixedDetailView .shopthelook_share_header,
+.fixedDetailView .fa
+{
+  opacity: 0;
+}
+
+.detailView.newExpand .prevBtn,
+.detailView.newExpand .nextBtn,
+.detailView.newExpand .expand_photo,
+.detailView.newExpand .closeBtn,
+.detailView.newExpand .shopthelook_share_header,
+.detailView.newExpand .fa,
+.fixedDetailView.newExpand .prevBtn,
+.fixedDetailView.newExpand .nextBtn,
+.fixedDetailView.newExpand .expand_photo,
+.fixedDetailView.newExpand .closeBtn,
+.fixedDetailView.newExpand .shopthelook_share_header,
+.fixedDetailView.newExpand .fa{
+  opacity: 1;
+  -webkit-transition: opacity  0.15s ease-in 0.3s;
+  -moz-transition:opacity  0.15s ease-in 0.3s;
+  -ms-transition: opacity  0.15s ease-in 0.3s;
+  -o-transition: opacity  0.15s ease-in 0.3s;
+  transition: opacity  0.15s ease-in 0.3s;
+}
+
+.detailView.expand .navigationArrow,.fixedDetailView.expand .navigationArrow{
+  display: block;
+}
+
+.expandDetail{
+  position: relative;
+}
+
+.shareRow{
+  position: absolute;
+  bottom: 40px;
+  left: 30px;
+}
+
+.shopthelook_wrapper{
+  height: 30px;
+}
+
+
+#demo path{
+  fill:black;
+  cursor: pointer;
+}
+
+#demo:hover path{
+  fill:red;
+}
+
+#west path{
+  fill:blue;
+  cursor: pointer;
+}
+
+#west:hover path{
+  fill:red;
+}
+
+text{
+  font-weight: bold;
+}
+
+.header{
+  background: url("http://50.secondthought.com/images/header.png") no-repeat center 0 #003764;
+  width: 100%;
+  height: 224px;
+  cursor: pointer;
+}
+
+.intro{
+  font-size: 20px;
+  font-family: "Gotham Book";
+  color: rgb(255, 255, 255);
+  line-height: 1.8;
+  text-align: center;
+  background: #003764;
+  padding: 30px 54px 30px;
+    cursor: pointer;
+}
+
+#usMap{
+  display: block;
+  width: 80%;
+  margin: 30px auto 0;
+}
+
+.filter_bar{
+  width:1168px;
+  background-color:#6690ae;
+  padding: 7px 0 7px 15px;
+  margin: 30px 0;
+  height: 39px;
+}
+
+.filter_bar_dropdown_arrow{
+  font-size: 18px;
+  font-family: "FontAwesome";
+  color: rgb(255, 255, 255);
+}
+.filter_bar_by_states_by_items {
+  font-size: 24px;
+  font-family: "Cervo W01 Regular";
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-right: 100px;
+  cursor: pointer;
+}
+.dropdown_state_items {
+  font-size: 18px;
+  font-family: "Cervo W01 Regular";
+  color: rgb(102, 144, 174);
+  line-height: 1.667;
+}
+.dropdown_state_items_on {
+  font-size: 14px;
+  font-family: "Cervo W01 Regular";
+  color: rgb(255, 255, 255);
+  line-height: 1.667;
+  background-color:#004779;
+}
+.warning {
+  font-size: 28px;
+  font-family: "Cervo W01 Thin";
+  color:#c3002f;
+  line-height: 1;
+  border:2px solid #c3002f;
+  padding: 30px 45px;
+  width:327px;
+}
+.stateWrapper{
+  width: 260px;
+  height: 260px;
+  margin: 0 auto;
+  position: relative;
+}
+.two_letter_state_box{
+  font-size: 24px;
+  font-family: "Cervo W01 Regular";
+  color: rgb(255, 255, 255);
+  background-color:#004779;
+  width:42px;
+  height:42px;
+  text-align: center;
+  line-height: 42px;
+}
+.grid_photo{
+  width:260px;
+  height:260px;
+  padding-top:0px;
+  padding-left:17px;
+  padding-right:17px;
+  padding-bottom:20px;  
+}
+.grid_hover_name {
+  font-size: 38px;
+  font-family: "Cervo W01 Medium";
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  margin-top: 33%;
+  letter-spacing: 0.01em;
+}
+.grid_hover_state {
+  margin-top: 10px;
+  font-size: 25px;
+  font-family: "Cervo W01 Light";
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+}
+.grid_hover_bg{
+  background-color:rgba(195,0,47,.75);
+  width:237px;
+  height:237px;
+  position: absolute;
+  left:11px;
+  top:13px;
+  text-align: center;
+  transition: opacity .5s ease-in-out;
+  -moz-transition: opacity .5s ease-in-out;
+  -webkit-transition: opacity .5s ease-in-out;
+  opacity: 0;
+
+}
+.stateWrapper:hover .grid_hover_bg{
+  opacity: 1;
+}
+
+.expand_name {
+  font-size: 50px;
+  font-family: "Cervo W01 Medium";
+  color: rgb(0, 71, 121);
+  text-transform: uppercase;
+}
+.expand_link {
+  font-size: 16px;
+  font-family: "Gotham Book";
+  color: rgb(195, 0, 47);
+  line-height: 2.25;
+  text-decoration:underline;
+}
+.expand_text {
+  font-size: 16px;
+  font-family: "Gotham Book";
+  color: rgb(77, 77, 77);
+  line-height: 1.2em;
+  margin: 20px 0;
+  width: 575px;
+}
+img.expand_photo {
+  width:480px;
+  height:480px;
+  max-width: 480px;
+}
+.expand_two_letter_state{
+  font-size: 40px;
+  font-family: "Cervo W01 Medium";
+  color: rgb(255, 255, 255);
+  line-height: 0.892;
+  text-align: center;
+  background-color:#c3002f;
+  width:50px;
+  height:50px;
+  line-height: 50px;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+}
+.shopthelook_header {
+  font-size: 30px;
+  font-family: "Cervo W01 Medium";
+  color: rgb(0, 71, 121);
+  text-transform:uppercase;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+.shopthelook_subheader {
+  font-size: 20px;
+  font-family: "Cervo W01 Medium";
+  color: rgb(0, 71, 121);
+  line-height: 1.633;
+  float: left;
+  margin-right: 20px;
+}
+.shopthelook_item {
+  font-size: 20px;
+  font-family: "Cervo W01 Light";
+  color: rgb(77, 77, 77);
+  text-decoration:underline;
+  float: left;
+  line-height: 1.6333;
+}
+.shopthelook_share_header {
+  font-size: 20px;
+  font-family: "Cervo W01 Medium";
+  color: rgb(0, 71, 121);
+  text-transform: uppercase;
+  line-height: 40px
+}
+.shopthelook_share_icons{
+  background-color:#004779;
+  font-size: 30px;
+  font-family: "FontAwesome";
+  color: #ffffff;
+  width: 40px;
+  display: inline-block;
+  height: 40px;
+  border-radius: 40px;
+  text-align: center;
+  line-height: 40px;
+  margin-right: 15px;
+  text-decoration: none;
+}
+.btn_load_more_styles{
+  font-size: 37px;
+  font-family: "Cervo W01 Regular";
+  color: rgb(0, 71, 121);
+  text-transform:uppercase;
+  padding: 15px 20px;
+  border: 2px solid #004779;
+  margin:40px auto 0;
+  width: 260px;
+  text-align: center;
+  cursor: pointer;
+}
+.btn_load_more_styles.hidden{
+  display: none;
+}
+.footer{
+  width:100%;
+  background-color:#004779;
+  padding: 30px 0px;
+  margin-top: 60px;
+}
+a.footer_logo{
+  display: block;
+  background: url("http://50.secondthought.com/images/footer_logo.png") no-repeat 0 0 transparent;
+  width: 160px;
+  height: 53px;
+  margin: 0 auto;
+}
+
+.footer_text{
+  font-size:13px;
+  line-height:1.2em;
+  font-family: "Gotham Book";
+  color: rgb(255, 255, 255);
+  width:980px;
+  margin: 30px auto;
+  text-align: center;
+}
+.footer_share_icons{
+  background-color:#ffffff;
+  font-size: 40px;
+  font-family: "FontAwesome";
+  color: #004779;
+  background: transparent;
+  width: 210px;
+  margin: 0 auto;
+}
+
+.footer_share_icons .fa{
+  background-color:#fff;
+  color:  #004779 ;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  text-align: center;
+  font-size:35px;
+  line-height: 40px;
+  margin-right: 5px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.footer_share_icons .fa.facebook{ line-height: 50px; }
+
+.st0{fill:#B1C7D6;}
+.st1{fill:#CCDAE4;}
+.st2{fill:#43779B;}
+.st3{fill:#6790AE;}
+.st4{fill:#80A2BB;}
+.st5{fill:#e1e1e1;}
+
+.st0:hover,.st1:hover,.st2:hover,.st3:hover,.st4:hover,.st5:hover{
+  fill:#c3002f;
+  /*filter: url(#dropShadow);
+  -webkit-filter: url(#dropShadow);*/
+  z-index: 1;
+  position: relative;
+}
+
+.st0.active path,.st1.active path,.st2.active path,.st3.active path,.st4.active path,.st5.active path{
+  fill:#c3002f;
+  /*filter: url(#dropShadow);
+  -webkit-filter: url(#dropShadow);*/
+  z-index: 1;
+  position: relative;
+}
+
+.region{
+  position: relative;
+}
+
+.northEastTxt{
+
+}
+
+.influencerImgWrapper{
+  margin-bottom: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.state{
+  position: absolute;
+  bottom: 10px;
+  left:12px;
+}
+
+.influencerImgWrapper img{
+  max-width: 260px;
+  max-height: 260px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: block;
+}
+  
+.sprite{
+  background: url("http://50.secondthought.com/images/sprites.png") no-repeat 0 0 transparent;
+  display: block;
+  position: absolute;
+}
+
+.prevBtn{
+  background-position: -50px 0;
+  width: 18px;
+  height: 31px;
+  top:45%;
+  left: -12px;
+}
+
+.nextBtn{
+  background-position: -70px 0;
+  width: 18px;
+  height: 31px;
+  top:45%;
+  right: -12px;
+}
+
+.closeBtn{
+  background-position: -30px 0;
+  width: 17px;
+  height: 18px;
+  top:8px;
+  right: 8px;
+}
+
+.navigationArrow{
+  background-color: #ffffff;
+  background-position: 0 0;
+  width: 25px;
+  height: 15px;
+  top:-2px;
+  left:0;
+  display: none;
+  -webkit-transition: all 2s ease-out;
+  -moz-transition: all 2s ease-out;
+  -ms-transition: all 2s ease-out;
+  -o-transition: all 2s ease-out;
+  transition:all 2s ease-out;  
+}
+
+.navigationArrow.state1{
+    left: 11%;
+}
+
+.navigationArrow.state2{
+    left: 36%;
+}
+
+.navigationArrow.state3{
+    left: 61%;
+}
+
+.navigationArrow.state4{
+    left: 86%;
+}
+.detailView .col-md-7,.fixedDetailView .col-md-7{
+    width: calc(56.33% - 30px);
+    margin: 30px 0 0 30px;
+}
+
+.region{
+  cursor: pointer;
+}
+
+.optionWrapper{
+  float: left;
+  position: relative;
+}
+
+
+#retrieveCover_list, #retrieveCover_list_item{
+    position: absolute;
+    top: 35px;
+    left: -12px;
+    z-index: 1;
+    width: 100%;
+    border-left: 1px dotted #dedddd;
+    border-right: 1px dotted #dedddd;
+    background: #fff;
+    max-height: 400px;
+    display: none;
+}
+
+
+
+#retrieveCover_list span, #retrieveCover_list_item span {
+    border-bottom: 1px solid #dedddd;
+    height: 30px;
+    width: 100%;
+    cursor: pointer;
+    padding-top: 3px;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
+  width: 8px;
+  border-radius: 0;
+  background-color: #c3002f !important;
+}
+
+.mCSB_scrollTools{
+  width: 8px;
+}
+
+.mCSB_inside>.mCSB_container {
+    margin-right: 8px;
+}
+
+.mCS-dark.mCSB_scrollTools .mCSB_draggerRail{
+  background-color: transparent;
+}
+  
+.st6{fill:none;stroke:#D3D3D3;stroke-linecap:round;stroke-linejoin:round;}
+.st7{fill:none;stroke:#D3D3D3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.9974,1.9948;}
+.st8{fill:none;stroke:#D3D3D3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.9912,1.9824;}
+
+.full_state{
+  font-size: 30px;
+  font-family: "Cervo W01 Medium";
+  color: rgb(102, 144, 174);
+  text-transform: uppercase
+}
+
+@media only screen and (max-width:768px){
+
+  .detailView .prevBtn,.detailView .nextBtn,.detailView .expand_photo,.detailView .closeBtn{
+    opacity: 1;
+  }
+
+
+  .detailView{
+    border: none;
+  }
+  .container{
+    max-width: 414px;
+  }
+
+  .header{
+    background: url("http://50.secondthought.com/images/mobile/header.png") no-repeat center 0 #003764;
+    width: 100%;
+    height: 105px;
+    background-size: 320px 105px;
+  }
+
+  .intro{
+    max-width: 100%;
+    padding: 20px;
+    background: #ffffff;
+    font-size: 12px;
+    color: #004779;
+    line-height: 1.8;
+    margin-top: 105px;
+  }
+
+  .filter_bar{
+    max-width: 100%;
+    background: transparent;
+    margin: 15px 0 5px;
+    padding: 7px 0;
+  }
+
+  .hero-unit{
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .hero-unit .col-md-3{
+    width: 33.333333%;
+  }
+
+  .stateWrapper{
+    width: 87%;
+    height: 87%;
+  }
+
+  .state{
+    width: 14px;
+    height: 14px;
+    font-size: 12px;
+    line-height: 15px;
+    left: 5px;
+    bottom: 5px;
+  }
+
+  .influencerImgWrapper img{
+    width: 100%;
+    height: 100%;
+  }
+
+  .grid_hover_bg{
+    width: 92px;
+    height: 92px;
+    left:0;
+    top: 0
+  }
+
+  .footer_text{
+    max-width: 95%;
+  }
+
+  #usMap{
+    height: auto;
+  }
+
+  .filter_bar_by_states_by_items{
+     font-size: 15px;
+     color: #004779;
+     line-height: 1.541;
+     margin:0 auto;
+  }
+
+  .optionWrapper{
+    width: 50%;
+    text-align: center;
+  }
+
+  .footer_share_icons .fa{
+    font-size: 28px;
+    width: 33px;
+    height: 33px;
+    border-radius: 28px;
+    line-height: 33px;
+  }
+
+  .footer_share_icons{
+    width: 185px;
+  }
+
+
+  .rightColumDetail{
+    width: 100%;
+    margin: 0
+  }
+
+  .expand_text{
+    width: 100%;
+    margin: 22px 0;
+  }
+
+  .detailView .col-md-7{
+    width: 100%;
+    margin-top: 17px;
+    margin-left: 0px;
+  }
+
+  img.expand_photo{
+    max-width: 100%;
+    height: auto;
+        margin: 0 auto;
+    display: block;
+  }
+
+  .header{
+    position: fixed;
+    left: 0;
+    top:0;
+    z-index: 2
+  }
+
+  .nextBtn{ top: 32% ; right: -1px; }
+
+  .prevBtn{ top: 33% ; left: -1px;}
+
+  .shopthelook_wrapper.col-md-6{width: 100%; height: auto;}
+
+  .shopthelook_header{margin: 0 0 17px;}
+
+  .col-md-3.shareRow{
+    position: initial;
+    bottom: inherit;
+    width: 100%;
+    margin-top: 28px;
+  }
+
+  .sprite{
+    background: url("http://50.secondthought.com/images/mobile/sprites.png") no-repeat 0 0 transparent;
+    background-size: 150px 50px;
+  }
+
+  .nextBtn{
+    background-position: -19px 0;
+    width: 24px;
+  }
+
+  .closeBtn {
+    background-position: 0px 0;
+    width: 17px;
+    height: 17px;
+    right: 1%;
+    position: fixed;
+    top: 110px;
+    z-index: 11;
+  }
+
+  .prevBtn{
+    background-position: -19px 0;
+    width: 24px;
+    -webkit-transform: rotate(180deg);     /* Chrome and other webkit browsers */
+    -moz-transform: rotate(180deg);        /* FF */
+    -o-transform: rotate(180deg);          /* Opera */
+    -ms-transform: rotate(180deg);         /* IE9 */
+    transform: rotate(180deg);             /* W3C compliant browsers */
+  }
+
+  #retrieveCover_list span, #retrieveCover_list_item span{
+    background-color: rgba(103,144,174,0.95);
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    line-height: 38px;
+    height: 40px;
+  }
+
+  #retrieveCover_list span:hover, #retrieveCover_list_item span:hover{
+    background-color:#004779;
+  }
+
+  #retrieveCover_list, #retrieveCover_list_item{
+    top:22px;
+    left:0;
+    border: none;
+    width: 96%;
+    max-height: inherit;
+  }
+
+  .grid_hover_name,.shopthelook_share_header,.grid_hover_state,.grid_hover_bg{
+    display: none;
+  }
+
+  a.footer_logo{
+    background: url("http://50.secondthought.com/images/mobile/footer_logo.png") no-repeat 0 0 transparent;
+    width: 105px;
+    height: 35px;
+    background-size: 105px 35px;
+  }
+
+  .detailView.expand{
+    position: fixed;
+    left:0%;
+    top:105px;
+    z-index: 111111;
+    background: #ffffff;
+    padding: 28px 15px 0; 
+    border: none;
+    overflow-y: auto !important;
+    max-height: inherit;
+    height:calc(100% - 105px);
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+  }
+
+  .expand_two_letter_state{
+    left: 15%;
+  }
+
+}
+
+@media screen and (max-width: 420px) {
+
+  .expand_two_letter_state{
+    left: 20px;
+  }
+  .detailView.expand{
+    position: fixed;
+    left:50%;
+    top:105px;
+    z-index: 111111;
+    background: #ffffff;
+    padding: 28px 15px 0; 
+    border: none;
+    overflow-y: auto !important;
+    max-height: inherit;
+    height:calc(100% - 105px);
+    padding-bottom: 100px;
+    margin-left: -207px;
+    max-width: 414px;
+  }
+
+
+  .detailView.expand{
+    left:0;
+    margin-left: 0;
+  }
+
+  .closeBtn{
+    right: 8px;
+  }
+}
